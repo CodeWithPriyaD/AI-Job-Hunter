@@ -1,0 +1,23 @@
+</> gitignore
+
+#Virtual environment
+.venv/
+
+#Python cache
+__pycache_/
+*.pyc
+
+#SQLite database
+*.db
+
+# Logs
+logs/
+
+#Reports
+reports/
+
+#VS Code
+.vscode/
+
+#Environment variables
+.env
