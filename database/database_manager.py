@@ -33,6 +33,40 @@ class DatabaseManager:
             """
         )
         self.connection.commit()
+        
+    def insert_job(self, job):
+        self.cursor.execute("""
+        INSERT INTO jobs (
+            company,
+            title,
+            location,
+            description,
+            experience,
+            salary,
+            source,
+            apply_link,
+            posted_date,
+            skills,
+            score,
+            applied
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            job.company,
+            job.title,
+            job.location,
+            job.description,
+            job.experience,
+            job.salary,
+            job.source,
+            job.apply_link,
+            job.posted_date,
+            ", ".join(job.skills) if isinstance(job.skills, (list, tuple)) else job.skills,
+            job.score,
+            int(job.applied)
+        ))
+
+        self.connection.commit()
 
     def close(self):
         self.connection.close()

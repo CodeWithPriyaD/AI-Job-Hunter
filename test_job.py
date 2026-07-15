@@ -1,4 +1,4 @@
-from model.job import Job
+from models.job import Job
 
 job = Job(
     company="ABC Corp",
